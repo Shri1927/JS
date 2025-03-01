@@ -1,90 +1,117 @@
-*{
+* {
     margin: 0;
     padding: 0;
-    font-family: poppins, sans-serif;
+    font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
 }
 
-.container{
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
+.container {
     width: 100%;
     min-height: 100vh;
-    background : linear-gradient(135deg, #153677, #4e085f);
+    background: linear-gradient(135deg, #153677, #4e085f);
     padding: 10px;
 }
 
-.todo-app{
+.todo-app {
     width: 100%;
     max-width: 540px;
     background: #fff;
     border-radius: 10px;
     padding: 40px 30px 70px;
     margin: 100px auto 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Added a subtle box shadow */
 }
 
-.todo-app h2{
+.todo-app h2 {
     color: #002765;
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-
+    font-size: 24px;
 }
 
-.todo-app h2 img{
+.todo-app h2 img {
     width: 30px;
     margin-left: 10px;
 }
 
-.row{
+.row {
     display: flex;
+    height: 40px;
+    width: 100%; /* Full width for better responsiveness */
+    max-width: 440px; /* Constrain width of input and button container */
     align-items: center;
     justify-content: space-between;
     background: #edeef0;
     border-radius: 30px;
-    padding: 30px;
+    padding: 0 20px; /* Adjusted padding */
     margin-bottom: 20px;
 }
 
-input{
+input {
     flex: 1;
     border: none;
     outline: none;
     background: transparent;
     padding: 10px;
-    font-weight: 14px;
+    font-size: 14px; /* Fixed typo for font-weight to font-size */
+    color: #333; /* Ensured input text has color */
 }
 
-button{
+button {
     border: none;
     outline: none;
-    padding: 16px 50px;
+    padding: 10px 25px; /* Adjusted padding for button */
     background: #ff5945;
     color: #fff;
     border-radius: 40px;
     cursor: pointer;
     font-size: 16px;
+    transition: background-color 0.3s ease; /* Smooth hover transition */
 }
 
-ul li{
+button:hover {
+    background: #e04c3c; /* Darker shade on hover */
+}
+
+ul {
     list-style: none;
+    padding: 0;
+}
+
+ul li {
+    position: relative; /* Required for the positioning of the "before" pseudo-element */
     font-size: 17px;
     padding: 12px 8px 12px 50px;
     user-select: none;
     cursor: pointer;
+    border-bottom: 1px solid #f0f0f0; /* Added slight bottom border to separate tasks */
+    transition: background-color 0.3s ease; /* Smooth background color transition */
 }
 
-ul li::before{
+ul li:hover {
+    background-color: #f9f9f9; /* Light hover effect */
+}
+
+ul li::before {
     content: '';
     position: absolute;
     width: 28px;
     height: 28px;
     border-radius: 50%;
     background-size: cover;
-    background: url(images/unchecked.png);
-    background-position: center;
+    background: url(images/unchecked.png) no-repeat center;
+    background-color: #fff; /* Ensures the background is clear for the icon */
     top: 12px;
     left: 8px;
+    transition: background 0.3s ease; /* Smooth icon transition */
 }
 
+ul li.checked {
+    color: #555;
+    text-decoration: line-through;
+}
+
+ul li.checked::before {
+    background: url(images/checked.png) no-repeat center;
+}
